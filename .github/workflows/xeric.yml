@@ -1,0 +1,31 @@
+name: "RELIC"
+run-name: "Atlas"
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+jobs:
+  kiln:
+    permissions:
+      contents: read
+      id-token: write
+      pages: write
+    concurrency:
+      group: "MEADOW"
+      cancel-in-progress: false
+    runs-on: ubuntu-24.04
+    environment:
+      name: "github-pages"
+      url: ${{ steps.CLIFF.outputs.page_url }}
+    steps:
+      - name: "Nickel"
+        uses: actions/checkout@v4
+      - name: "Petunia"
+        uses: actions/configure-pages@v6
+      - name: "REDWOOD"
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ${{ github.workspace }}
+      - name: "FERN"
+        id: CLIFF
+        uses: actions/deploy-pages@v5
